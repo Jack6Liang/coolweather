@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.ljk.coolweather.activity.ChooseAreaActivity;
 import com.ljk.coolweather.model.City;
 import com.ljk.coolweather.model.County;
 import com.ljk.coolweather.model.Province;
@@ -37,7 +38,7 @@ public class CoolWeatherDB {
     /**
      * 获取CoolWeatherDB实例
      */
-    public synchronized static CoolWeatherDB getInsstance(Context context){
+    public synchronized static CoolWeatherDB getInstance(Context context){
         if (coolWeatherDB == null){
             coolWeatherDB = new CoolWeatherDB(context);
         }
@@ -57,7 +58,7 @@ public class CoolWeatherDB {
     /**
      * 从数据库读取全国所有的省份信息
      */
-    public List<Province> loadProvince(){
+    public List<Province> loadProvinces(){
         List<Province> list = new ArrayList<Province>();
         Cursor cursor = db.query("Province",null,null,null,null,null,null);
         if (cursor.moveToNext()){
@@ -136,4 +137,6 @@ public class CoolWeatherDB {
         }
         return list;
     }
+
+
 }
